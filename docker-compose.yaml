@@ -12,13 +12,16 @@ services:
       - ./producer-app:/usr/src/app
     extra_hosts:
       - "host.docker.internal:172.17.0.1"
-  # consumer_app:
-  #   build: ./consumer-app/.
-  #   container_name: node_consumer
-  #   volumes:
-  #     - ./consumer-app:/usr/src/app
-  #   extra_hosts:
-  #     - "host.docker.internal:172.17.0.1"
+  
+  consumer_app:
+    build: ./consumer-app/.
+    container_name: node_consumer
+    ports:
+      - 3001:3001
+    volumes:
+      - ./consumer-app:/usr/src/app
+    extra_hosts:
+      - "host.docker.internal:172.17.0.1"
   zookeeper:
     image: confluentinc/cp-zookeeper:latest
     environment:

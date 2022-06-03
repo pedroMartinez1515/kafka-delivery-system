@@ -11,8 +11,6 @@ const kafka = new Kafka({
 
 const producer = kafka.producer();
 
-
-
 app.post('/send', async function (req, res) {
 
     console.log(req.body)
